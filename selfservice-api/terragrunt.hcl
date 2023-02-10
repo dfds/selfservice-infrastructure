@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/dfds/infrastructure-modules.git//database/postgres?ref=0.6.104"
+  source = "git::https://github.com/dfds/infrastructure-modules.git//database/postgres?ref=0.7.5"
 }
 
 # Include all settings from the root terraform.tfvars file
@@ -13,4 +13,6 @@ inputs = {
   db_name = "selfservice"
   db_master_username = "selfserviceuser"
   environment = "prod"
+  engine_version = 14
+  db_instance_class = "db.t3.micro"
 }
