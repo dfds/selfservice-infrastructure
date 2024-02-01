@@ -14,7 +14,6 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-
 module "db_instance" {
   source = "git::https://github.com/dfds/terraform-aws-rds.git?ref=0.16.15"
 
@@ -67,7 +66,15 @@ module "db_instance" {
   is_publicly_accessible     = true
   public_access_ip_whitelist = ["0.0.0.0/0"]
 
-
+  instance_parameters = [
+    {
+      name  = "log_connections"
+      value = 1
+    },
+    {
+      name  = "log_disconnections"
+      value = 1
+  }]
 }
 
 output "iam_instance_profile_for_ec2" {
