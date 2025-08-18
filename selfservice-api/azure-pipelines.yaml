@@ -40,14 +40,14 @@ stages:
         container: prime_pipeline_container
         steps:
           - script: |
-              terragrunt plan-all \
+              terragrunt plan --all \
                 --working-dir ./selfservice-api \
                 --source-update \
                 --non-interactive \
                 -input=false
             displayName: Terragrunt Plan
           - script: |
-              terragrunt apply-all \
+              terragrunt apply --all \
                 --working-dir ./selfservice-api \
                 --source-update \
                 --non-interactive \
